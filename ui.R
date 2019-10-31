@@ -16,5 +16,12 @@ fluidPage(theme = shinytheme("darkly"),
                                                                                                  "Three Parameter Logistic (3PL)" = "3PL")),
                                        uiOutput("diff.UI"),
                                        uiOutput("disc.UI"),
-                                       uiOutput("guess.UI")),
+                                       uiOutput("guess.UI"),
+                                       fluidRow(
+                                         column(6, align = "center", numericInput("ability.lower", "Lower Ability Limit", value = -4)),
+                                         column(6, align = "center", numericInput("ability.upper", "Upper Ability Limit", value = 4))
+                                       ),
+                                       fluidRow(
+                                         column(8, align = "center", offset = 2, actionButton("plot.it", "Generate ICC"))
+                                       )),
                           mainPanel(withSpinner(plotlyOutput('iccplot')))))
